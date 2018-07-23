@@ -39,6 +39,8 @@ namespace mxnet {
 
 KVStore* KVStore::Create(const char *type_name) {
   std::string tname = type_name;
+  std::cout<<'src->kvstore->kvstore.cc: line 42'<<std::endl;
+  std::cout<<'TEST: kvstore type'<<tname<<std::endl;
   std::transform(tname.begin(), tname.end(), tname.begin(), ::tolower);
   KVStore* kv = nullptr;
   bool use_device_comm = false;
