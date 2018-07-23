@@ -771,6 +771,8 @@ int MXDataIterGetPadNum(DataIterHandle handle, int *pad) {
 int MXKVStoreCreate(const char *type,
                     KVStoreHandle *out) {
   API_BEGIN();
+  std::cout<<"src->c_api->c_api.cc: line 774"<<std::endl;
+  std::cout<<"TEST: "<<*type<<std::endl;
   *out = KVStore::Create(type);
   API_END();
 }

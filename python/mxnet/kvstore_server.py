@@ -76,6 +76,15 @@ def _init_kvstore_server_module():
     """Start server/scheduler."""
     is_worker = ctypes.c_int()
     check_call(_LIB.MXKVStoreIsWorkerNode(ctypes.byref(is_worker)))
+    print('python->mxnet->kvstore_server.py: line 79')
+    is_server = ctypes.c_int()
+    check_call(_LIB.MXKVStoreIsServerNode(ctypes.byref(is_server)))
+    is_scheduler = ctypes.c_int()
+    check_call(_LIB.MXKVStoreIsSchedulerNode(ctypes.byref(is_scheduler)))
+    if is_server.value != 0:
+        print('TEST: server node')
+    if is_scheduler.value != 0:
+        print('TEST: scheduler node')
     if is_worker.value == 0:
         kvstore = create('dist')
         server = KVStoreServer(kvstore)
