@@ -39,8 +39,8 @@ namespace mxnet {
 
 KVStore* KVStore::Create(const char *type_name) {
   std::string tname = type_name;
-  std::cout<<'src->kvstore->kvstore.cc: line 42'<<std::endl;
-  std::cout<<'TEST: kvstore type'<<tname<<std::endl;
+  std::cout<<"src->kvstore->kvstore.cc: line 42"<<std::endl;
+  std::cout<<"TEST: kvstore type"<<tname<<std::endl;
   std::transform(tname.begin(), tname.end(), tname.begin(), ::tolower);
   KVStore* kv = nullptr;
   bool use_device_comm = false;
@@ -56,13 +56,13 @@ KVStore* KVStore::Create(const char *type_name) {
     kv = new kvstore::KVStoreDist(use_device_comm);
     if (!has("_async") && kv->IsWorkerNode() && kv->get_rank() == 0) {
       // configure the server to be the sync mode
-      std::cout<<'src->kvstore->kvstore.cc: line 57'<<std::endl;
-      std::cout<<'TEST: Sync Mode Server is created'<<std::endl;
+      std::cout<<"src->kvstore->kvstore.cc: line 57"<<std::endl;
+      std::cout<<"TEST: Sync Mode Server is created'"<std::endl;
       kv->SendCommandToServers(static_cast<int>(kvstore::CommandType::kSyncMode), "");
     }
     else{
-      std::cout<<'src->kvstore->kvstore.cc: line 62'<<std::endl;
-      std::cout<<'TEST: Async Mode Server is created'<<std::endl;
+      std::cout<<"src->kvstore->kvstore.cc: line 62"<<std::endl;
+      std::cout<<"TEST: Async Mode Server is created"<<std::endl;
     }
 #else
     LOG(FATAL) << "compile with USE_DIST_KVSTORE=1 to use " << tname;
